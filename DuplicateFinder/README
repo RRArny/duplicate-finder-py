@@ -1,0 +1,24 @@
+DuplicateFinder.py README
+
+USAGE:
+-----
+
+If you plan on using the script as a standalone program,
+you eather provide the directory path as a single command
+line argument, e.g.:
+
+python DuplicateFinder.py /home/xxx/
+
+
+If you want to use the functionality in your own script,
+copy the DuplicateFinder somewhere inside your PYTHONPATH,
+import duplicatefinder
+and invoke the
+duplicatefinder.removeDuplicates() function.
+Syntax:
+
+removeDuplicates(dir,			#String: Path to the directory 
+				verb = True		#Boolean: If True: extended
+								console output, quiet if False.
+				
+				)

@@ -93,25 +93,31 @@ def removeDuplicates(dir : "String", verb : "Boolean" = True) -> "Number of dele
 
 if(__name__ == "__main__"):
 
-    while True :
-        directory = input("Enter a directory ('.' for current working directory, enter 'exit' to quit):\n")
+    if (len(sys.argv) > 1):
+        directory = sys.argv[1]
     
-        if(directory == "exit"):
-            sys.exit()
-            
-        elif (directory == "."):
-            directory = str(Path.cwd())
-            break
+    else:
+        while True :
+            directory = input("Enter a directory ('.' for current working directory, enter 'exit' to quit):\n")
         
-        elif (not Path(directory).exists()):
-            print("Directory '{}' does not exist, try again...\n".format(directory))
+            if(directory == "exit"):
+                sys.exit()
+                
+            elif (directory == "."):
+                directory = str(Path.cwd())
+                break
             
-        elif (not Path(directory).is_dir()):
-            print("'{}' is not a directory!\n".format(directory))
+            elif (not Path(directory).exists()):
+                print("Directory '{}' does not exist, try again...\n".format(directory))
+                
+            elif (not Path(directory).is_dir()):
+                print("'{}' is not a directory!\n".format(directory))
+                
+            else:
+                break
             
-        else:
-            break
-        
+    print("Checking {}...".format(directory))
+    
     counter = removeDuplicates(directory)
     
     if (counter == 0):
