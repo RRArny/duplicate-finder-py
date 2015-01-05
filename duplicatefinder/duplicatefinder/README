@@ -7,7 +7,7 @@ If you plan on using the script as a standalone program,
 you eather provide the directory path as a single command
 line argument, e.g.:
 
-python DuplicateFinder.py /home/xxx/
+python duplicatefinder.py /home/xxx/
 
 
 If you want to use the functionality in your own script,
