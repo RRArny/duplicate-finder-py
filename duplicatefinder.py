@@ -138,7 +138,11 @@ if(__name__ == "__main__"):
     
     for f in sys.argv[1:]:
         if Path(f).exists():
-            directory = f
+            if (not Path(directory).is_dir()):
+                print("'{}' is not a directory!\n".format(directory))
+            else:
+                directory = f
+                break
     
     while (directory == ""):
         directory = input("Enter a directory ('.' for current working directory, enter 'exit' to quit):\n")
@@ -149,14 +153,10 @@ if(__name__ == "__main__"):
         elif (directory == "."):
             directory = str(Path.cwd())
             break
-        
-        elif (not Path(directory).exists()):
-            directory = ""
-            print("Directory '{}' does not exist, try again...\n".format(directory))
             
         elif (not Path(directory).is_dir()):
-            directory = ""
             print("'{}' is not a directory!\n".format(directory))
+            directory = ""
             
         else:
             break
