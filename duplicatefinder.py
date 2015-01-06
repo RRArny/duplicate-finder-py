@@ -46,13 +46,12 @@ def equal(f1 : "Path", f2 : "Path") -> "True if content equal, else false":
     else:
         return False
 
-def _removeDuplicates(dir : "String", verb : "Boolean" = True, rec : "Boolean" = False) -> "Number of deleted files":
+def _removeDuplicates(dir : "String", verb : "Boolean" = True) -> "Number of deleted files":
     '''Helper function, DO NOT USE THIS!
     
     Arguments:
         dir: String - Path of the directory
         verb: Boolean - Verbose
-        rec: Boolean - Recursive
         
     For really not obvious reasons this function deletes at most 50 duplicate files.
     So battle plan is to call it until no new duplicates are found...
@@ -72,10 +71,7 @@ def _removeDuplicates(dir : "String", verb : "Boolean" = True, rec : "Boolean" =
                 os.remove(str(f2))
                 f2.unlink()
                 counter += 1
-    if (rec):            
-        for d in [x for x in Path(dir).iterdir() if x.is_dir()]:
-            counter += _removeDuplicates(d, verb, rec)
-        
+                
     return counter
 
 def removeDuplicates(dir : "String", verb : "Boolean" = True, rec : "Boolean" = False) -> "Number of deleted files":
@@ -91,6 +87,10 @@ def removeDuplicates(dir : "String", verb : "Boolean" = True, rec : "Boolean" = 
     while( deltac != 0):
         count += deltac
         deltac = _removeDuplicates(dir, verb)
+        
+    if (rec):            
+        for d in [x for x in Path(dir).iterdir() if x.is_dir()]:
+            counter += removeDuplicates(d, verb, rec)
         
     return count
 
