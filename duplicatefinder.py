@@ -68,6 +68,7 @@ def _removeDuplicates(dir : "String", verb : "Boolean" = True) -> "Number of del
                 if(verb):
                     print("'{}' and '{}' are equal.".format(f1, f2))
                     print("Deleting '{}'...\n".format(f2))
+                files.remove(f2)
                 os.remove(str(f2))
                 f2.unlink()
                 counter += 1
@@ -90,7 +91,7 @@ def removeDuplicates(dir : "String", verb : "Boolean" = True, rec : "Boolean" = 
         
     if (rec):            
         for d in [x for x in Path(dir).iterdir() if x.is_dir()]:
-            counter += removeDuplicates(d, verb, rec)
+            counter += removeDuplicates(str(d), verb, rec)
         
     return count
 
@@ -102,26 +103,17 @@ if(__name__ == "__main__"):
     verbose = ""
     rec = ""
 
-    if ("r" in sys.argv or "+r" in sys.argv):
+    if ("r" in sys.argv or "+r" in sys.argv or "-r" in sys.argv):
         rec = True
     
-    if ("v" in sys.argv or "+v" in sys.argv):
+    if ("v" in sys.argv or "+v" in sys.argv or "-v" in sys.argv):
         verbose = True
         
-    if ("vr" in sys.argv or "+vr" in sys.argv or "rv" in sys.argv or "+rv" in sys.argv):    
+    if ("vr" in sys.argv or "+vr" in sys.argv or "rv" in sys.argv or "+rv" in sys.argv or "-vr" in sys.argv or "-rv" in sys.argv):    
         verbose = True
         rec = True
-        
-    if ("-r" in sys.argv):
-        rec = False
     
-    if ("-v" in sys.argv):
-        verbose = False
-        
-    if ("-vr" in sys.argv or "-rv" in sys.argv):    
-        verbose = False
-        rec = False
-        
+    '''
     while(verbose == ""):
         answ = input("Do you want extensive output? [y/n]")
         if(answ in {"y", "yes"}):
@@ -135,6 +127,7 @@ if(__name__ == "__main__"):
             rec = True
         elif (answ in {"n", "no"}):
             rec = False
+    '''
     
     for f in sys.argv[1:]:
         if Path(f).exists():
