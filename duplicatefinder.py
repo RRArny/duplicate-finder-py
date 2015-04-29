@@ -129,6 +129,9 @@ if(__name__ == "__main__"):
             rec = False
     '''
     
+    verbose = (verbose == True)
+    rec = (rec == True)
+    
     for f in sys.argv[1:]:
         if Path(f).exists():
             if (not Path(directory).is_dir()):
