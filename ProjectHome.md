@@ -1,0 +1,1 @@
+Small python module or standalone script for searching directories for files with identical content and removing duplicates.
