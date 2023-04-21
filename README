@@ -19,14 +19,12 @@ copy the DuplicateFinder somewhere inside your PYTHONPATH,
 import duplicatefinder
 and invoke the
 duplicatefinder.removeDuplicates() function.
+
 Syntax:
+```
+removeDuplicates(dir,		#String: Path to the directory
+		verb = True,	#Boolean: If True: extended console output, quiet if False.								
+		rec = False	#Boolean: If True: recursive search
+)
+```
 
-removeDuplicates(dir,			#String: Path to the directory
-
-				verb = True,	#Boolean: If True: extended
-								#console output, quiet if False.
-								
-				rec = False		#Boolean: If True: recursive
-								#search
-				
-				)
