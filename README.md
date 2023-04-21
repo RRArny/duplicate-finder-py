@@ -6,7 +6,7 @@ If you plan on using the script as a standalone program,
 you eather provide the directory path as command
 line argument, e.g.:
 
-python duplicatefinder.py [-v][-r] /home/xxx/
+`python duplicatefinder.py [-v][-r] /home/xxx/`
 
 Add "v" or "-v" for extended console output.
 The search will not include subdirectories, unless you
