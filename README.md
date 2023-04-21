@@ -1,7 +1,6 @@
-DuplicateFinder.py README
+# DuplicateFinder.py README
 
-USAGE:
------
+## Standalone Usage
 
 If you plan on using the script as a standalone program,
 you eather provide the directory path as command
@@ -13,6 +12,7 @@ Add "v" or "-v" for extended console output.
 The search will not include subdirectories, unless you
 use eather the "r" or "-r" option.
 
+## Library Usage
 
 If you want to use the functionality in your own script,
 copy the DuplicateFinder somewhere inside your PYTHONPATH,
@@ -21,6 +21,7 @@ and invoke the
 duplicatefinder.removeDuplicates() function.
 
 Syntax:
+
 ```
 removeDuplicates(dir,		#String: Path to the directory
 		verb = True,	#Boolean: If True: extended console output, quiet if False.								
