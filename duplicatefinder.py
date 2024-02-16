@@ -29,22 +29,18 @@ def equal(f1 : "Path", f2 : "Path") -> "True if content equal, else false":
         f2: Path - 2nd file
     '''
     BLOCKSIZE = 65536
-    if(hash(f1) == hash(f2)):
-        with open(str(f1), 'rb') as file1:
-            with open(str(f2), 'rb') as file2:
-                buf1 = file1.read(BLOCKSIZE)
-                buf2 = file2.read(BLOCKSIZE)
-                while (len(buf1) > 0 or len(buf2) > 0):
-                    if(buf1 != buf2):
-                        return False
-                    buf1 = file1.read(BLOCKSIZE)
-                    buf2 = file2.read(BLOCKSIZE)
+    if(hash(f1) != hash(f2)):
+        return False
+    with open(str(f1), 'rb') as file1:
+        with open(str(f2), 'rb') as file2:
+            buf1 = file1.read(BLOCKSIZE)
+            buf2 = file2.read(BLOCKSIZE)
+            while (len(buf1) > 0 or len(buf2) > 0):
                 if(buf1 != buf2):
                     return False
-                else:
-                    return True
-    else:
-        return False
+                buf1 = file1.read(BLOCKSIZE)
+                buf2 = file2.read(BLOCKSIZE)
+            return buf1 == buf2
 
 def _removeDuplicates(dir : "String", verb : "Boolean" = True) -> "Number of deleted files":
     '''Helper function, DO NOT USE THIS!
